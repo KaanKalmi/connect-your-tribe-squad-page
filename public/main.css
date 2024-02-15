@@ -1,0 +1,38 @@
+main {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin-top: 2.5em;
+    justify-content: center;
+}
+
+.student-card {
+    display: flex;
+    margin: .5em;
+    padding: .4em;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+
+    & img {
+        display: block;
+        margin: .2em;
+        border: 3px solid var(--accent-color-light);
+        border-radius: 25em;
+    }
+}
+
+@media (min-width: 768px) {
+    main {
+        flex-direction: row;
+    }
+
+    .student-card {
+        margin: 1.5em;
+        padding: .6em;
+
+        & img {
+            margin: .4em;
+        }
+    }
+}

@@ -1,10 +1,34 @@
 <%- include('./partials/head') %>
-
-<h2>Students</h2>
-<ul>
-  <% persons.forEach(person => { %>
-    <li><a href="./person/<%= person.id %>"><%= person.name %></a>, squad_id <%= person.squad_id %></li>
-  <% }) %>
-</ul>
-
-<%- include('./partials/foot') %>
+  <!--<ul> <% persons.forEach(person => { %> <li><a href="./person/<%= person.id %>"><%= person.name %></a>, squad_id <%= person.squad_id %></li> <% }) %> </ul>-->
+  
+  <main>
+    <article class="student-card">
+      <img src="#" alt="student">
+      <h3 class="kalam-regular">Name Prefix Surname</h3>
+    </article>
+    <article class="student-card">
+      <img src="#" alt="student">
+      <h3 class="kalam-regular">Name Prefix Surname</h3>
+    </article>
+    <article class="student-card">
+      <img src="#" alt="student">
+      <h3 class="kalam-regular">Name Prefix Surname</h3>
+    </article>
+    <article class="student-card">
+      <img src="#" alt="student">
+      <h3 class="kalam-regular">Name Prefix Surname</h3>
+    </article>
+    <article class="student-card">
+      <img src="#" alt="student">
+      <h3 class="kalam-regular">Name Prefix Surname</h3>
+    </article>
+    <article class="student-card">
+      <img src="#" alt="student">
+      <h3 class="kalam-regular">Name Prefix Surname</h3>
+    </article>
+    <article class="student-card">
+      <img src="#" alt="student">
+      <h3 class="kalam-regular">Name Prefix Surname</h3>
+    </article>
+  </main>
+  <%- include('./partials/foot') %>
