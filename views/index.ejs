@@ -1,34 +1,11 @@
 <%- include('./partials/head') %>
-  <!--<ul> <% persons.forEach(person => { %> <li><a href="./person/<%= person.id %>"><%= person.name %></a>, squad_id <%= person.squad_id %></li> <% }) %> </ul>-->
+ <ul> <% persons.forEach(person => { %>
   
   <main>
     <article class="student-card">
-      <img src="#" alt="student">
-      <h3 class="kalam-regular">Name Prefix Surname</h3>
+      <picture><img src="<%= person.avatar %> " alt="student"></picture>
+      <h3 class="kalam-regular"><%= person.name %> <%= person.prefix %> <%= person.surname%></h3>
     </article>
-    <article class="student-card">
-      <img src="#" alt="student">
-      <h3 class="kalam-regular">Name Prefix Surname</h3>
-    </article>
-    <article class="student-card">
-      <img src="#" alt="student">
-      <h3 class="kalam-regular">Name Prefix Surname</h3>
-    </article>
-    <article class="student-card">
-      <img src="#" alt="student">
-      <h3 class="kalam-regular">Name Prefix Surname</h3>
-    </article>
-    <article class="student-card">
-      <img src="#" alt="student">
-      <h3 class="kalam-regular">Name Prefix Surname</h3>
-    </article>
-    <article class="student-card">
-      <img src="#" alt="student">
-      <h3 class="kalam-regular">Name Prefix Surname</h3>
-    </article>
-    <article class="student-card">
-      <img src="#" alt="student">
-      <h3 class="kalam-regular">Name Prefix Surname</h3>
-    </article>
+    <% }) %>
   </main>
   <%- include('./partials/foot') %>
