@@ -4,15 +4,4 @@ header {
     top: 0;
     text-align: center;
     z-index: 1;
-    & h1 {
-    margin: 1.2em 0 0 0;
-    font-size: 5em;
-    line-height: 1em;
-    text-decoration: underline;
-    text-decoration-color: var(--accent-color);
-    text-underline-offset: 8px;
-    }
-    & h2 {
-    font-size: 2em;
-    }
 }
