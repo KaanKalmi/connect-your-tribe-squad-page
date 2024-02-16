@@ -1,10 +1,133 @@
 <%- include('./partials/head') %>
 
-<h2>Students</h2>
+
+<h1>FDND Squadpage</h1>
+
+<section class="class-switch">
+  <ul class="slides">
+    <input type="radio" id="control-1" name="control" >
+    <input type="radio" id="control-2" name="control" checked>
+    <input type="radio" id="control-3" name="control">
+
+    <div class="navigator slide-1">
+      <label for="control-3">
+        <i class="fas fa-chevron-left"></i>
+      </label>
+      <label for="control-2">
+        <i class="fas fa-chevron-right"></i>
+      </label>
+    </div>
+    
+    <div class="navigator slide-2">
+      <label for="control-1">
+        <i class="fas fa-chevron-left"></i>
+      </label>
+      <label for="control-3">
+        <i class="fas fa-chevron-right"></i>
+      </label>
+    </div>
+    
+    <div class="navigator slide-3">
+      <label for="control-2">
+        <i class="fas fa-chevron-left"></i>
+      </label>
+      <label for="control-1">
+        <i class="fas fa-chevron-right"></i>
+      </label>
+    </div>
+    
+    <li class="slide">D</li>
+    <li class="slide">E</li>
+    <li class="slide">F</li>
+    
+    <div class="controls-visible">
+      <label for="control-1"></label>
+      <label for="control-2"></label>
+      <label for="control-3"></label>
+    </div>
+  </ul>
+</section>
+
+<section class="filters">
+
+<div class="dropdown">
+  <div class="select">
+    <div class="selected">Provincie</div>
+    <div class="caret"></div>
+  </div>
+  <ul class="menu">
+    <li>-</li>
+    <li>Noord-Holland</li>
+    <li>Zuid-Holland</li>
+    <li>Utrecht</li>
+    <li>Gelderland</li>
+    <li>Anders</li>
+  </ul>
+</div>
+
+
+<div class="dropdown">
+  <div class="select">
+    <span class="selected">Naam</span>
+    <div class="caret"></div>
+  </div>
+  <ul class="menu">
+    <li>-</li>
+    <li>A-Z</li>
+    <li>Z-A</li>
+  </ul>
+</div>
+
+<div class="dropdown">
+  <div class="select">
+    <span class="selected">Leeftijd</span>
+    <div class="caret"></div>
+  </div>
+  <ul class="menu">
+    <li>-</li>
+    <li>16-20</li>
+    <li>21-25</li>
+    <li>26-30</li>
+    <li>30+</li>
+  </ul>
+</div>
+
+<div class="dropdown">
+  <div class="select">
+    <span class="selected">Geslacht</span>
+    <div class="caret"></div>
+  </div>
+  <ul class="menu">
+    <li>-</li>
+    <li>M</li>
+    <li>V</li>
+
+  </ul>
+</div>
+
+</section>
+
+
+
+<section class="card-container">
+  <% persons.forEach(person => { %>
+    <div class="card">
+      <%= person.avatar %>
+      <ul>
+        <li>Naam: <%= person.name %> <%= person.prefix %> <%= person.surname %></li>
+        <li>Leeftijd: <%= person.custom.leeftijd %></li>
+        <li>Geslacht:</li>
+        <li>Provincie:</li>
+    </ul>
+    </div>
+  <% }) %>
+</section>
+
 <ul>
   <% persons.forEach(person => { %>
     <li><a href="./person/<%= person.id %>"><%= person.name %></a>, squad_id <%= person.squad_id %></li>
   <% }) %>
 </ul>
+
 
 <%- include('./partials/foot') %>
