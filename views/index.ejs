@@ -1,7 +1,5 @@
 <%- include('./partials/head') %>
- <ul> <% persons.forEach(person => { %>
-  
-  <main>
+  <main> <% persons.forEach(person => { %>
     <article class="student-card">
       <picture><img src="<%= person.avatar %> " alt="student"></picture>
       <h3 class="kalam-regular"><%= person.name %> <%= person.prefix %> <%= person.surname%></h3>
