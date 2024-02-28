@@ -141,14 +141,12 @@ ul.slides {
   }
   
   
-  /* Left/Right Button Classes Below */
-  
   .navigator {
     position: absolute;
     top: 50%;
     transform: translatey(-50%);
     width: 100%;
-    z-index: 100;
+    z-index: 50;
     padding: 0 20px;
     display: flex;
     justify-content: space-between;
@@ -244,7 +242,6 @@ ul.slides {
     opacity: 0;
     display: none;
     transition: 0.2s;
-    z-index: 3;
 
     & li{
         padding: 0.7em 0.5em;
@@ -282,12 +279,115 @@ ul.slides {
     }
 
   }
-
-  .card-container{
-  }
-
+  
   .card{
     height: 100px;
     width: 60px;
     background-color: #051C2C;
   }
+
+  form button{
+    background: none;
+    border: none;
+    font-size: 3em;
+    cursor: pointer;
+
+    &:hover{
+      transform: scale(1.3);
+      transition: .2s;
+      transition-timing-function: ease;
+    }
+  }
+
+.preloader{
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    background: #660094;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.7s ease;
+}
+
+.star1,.star2,.star3,.star4{
+    height: 120px;
+    position: absolute;
+    z-index: -1;
+    top:-100%
+}
+
+.star1{
+    right: 60%;
+    animation: stars 1.5s linear infinite 0.5s;
+}
+
+.star2{
+    left: 20%;
+    animation: stars 1.5s linear infinite 1s;
+}
+
+.star3{
+    animation: stars 1.5s linear infinite;
+}
+
+
+.rocket{
+    position: relative;
+    animation: rocket 0.01s ease infinite alternate;
+    bottom: 150px;
+    max-height: 400px;
+}
+
+.aarde{
+    position: absolute;
+    bottom: 0;
+    height: 40vh;
+    animation: aarde 12s ease alternate infinite;
+}
+
+
+@keyframes stars{
+    from{
+        top:-100%;
+    }
+    to{
+        top:100%;
+    }
+}
+
+@keyframes aarde{
+    from{
+        bottom: 0%;
+    }
+    to{
+        bottom:-100%;
+    }
+}
+
+@keyframes rocket{
+    from{
+        transform: translateY(0);
+    }
+    to{
+        transform: translateY(4px);
+    }
+}
+
+.end-preloader{  
+    opacity:0;
+    pointer-events:none;
+}
+
+.number{
+    position: absolute;
+    top: 15%;
+    left: 75%;
+    font-size: 5.2vh;
+    color: white;
+    font-family: sans-serif;
+}
+
+.website{
+  opacity: 0;
+}
