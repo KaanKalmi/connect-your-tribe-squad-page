@@ -1,45 +1,104 @@
-@import url('https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap");
 @import url(main.css);
 @import url(header.css);
+@import url("https://fonts.googleapis.com/css?family=Monoton|Montserrat");
 
-*{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    line-height: 1.5em;
-    list-style: none;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  line-height: 1.5em;
+  list-style: none;
 }
 
-:root{
-    --bckgrndclr: #0B0053;
-    --accntclr1Y: #F9BD00;
-    --accntclr1R: #E3004F;
-    --mainfont: 'Kalam', cursive;
-    --fontLarge: 700;
-    --fontMedium: 400;
-    --fontSmall: 300;
-
+:root {
+  --bckgrndclr: #660094;
+  --accntclr1Y: white;
+  --accntclr1R: #333;
+  --mainfont: sans-serif;
+  --fontLarge: 700;
+  --fontMedium: 400;
+  --fontSmall: 300;
 }
 
-
-body{
-    max-width: 100%;
-    overflow-x: hidden;
-    background: var(--bckgrndclr);
-    color: white;
+/* Stijlen voor de body */
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+  margin: 0;
+  /* Achtergrondkleur met een lineair verloop van links naar rechts */
+  background: linear-gradient(
+    to left,
+    #23a6d5,
+    #4a148c,
+    #ff0066,
+    #4a148c,
+    #23a6d5
+  );
+  background-size: 400% 400%;
+  animation: gradientTranisition 50s linear infinite; /* Animatie voor de overgang van het verloop */
+  width: 100%;
+  display: flex;
 }
 
+@keyframes gradientTranisition {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
 
+h1 {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  padding-top: 30px;
+  font-size: 8vw;
+  color: var(--accntclr1Y);
+  font-weight: var(--fontLarge);
+  font-family: var(--mainfont);
+  border-bottom: 2px solid var(--accntclr1R);
+}
 
-h1{
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    padding-top: 30px;
-    font-size: 8vw;
-    color: var(--accntclr1Y);
-    font-weight: var(--fontLarge);
-    font-family: var(--mainfont);
-    border-bottom: 2px solid var(--accntclr1R);
+picture img {
+  width: 50px;
+  border-radius: 50%;
+  height: auto;
+  object-fit: cover; /* Behoud de ware grootte van de foto */
+}
 
+/* Naam studenten */
+.kalam-regular {
+  font-family: var(--mainfont);
+  font-size: 20px;
+  color: var(--accntclr1Y);
+}
+
+/* Styling voor de tekst van de info bij de student */
+ul li {
+  font-family: var(--mainfont);
+  font-weight: var(--fontLarge);
+  margin-top: 5px;
+  margin-bottom: 5px;
+  color: var(--accntclr1Y);
+}
+
+/* Styling voor de emoji's */
+li form button {
+  font-size: 24px;
+  cursor: pointer;
+  margin-right: 2px;
+  margin-left: 2px;
+  background-color: none;
+}
+
+/* Hover voor de emoji's */
+li form button:hover {
+  transform: scale(1.2);
+  opacity: 0.5;
 }
