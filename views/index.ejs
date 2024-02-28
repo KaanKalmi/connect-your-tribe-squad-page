@@ -1,152 +1,33 @@
 <%- include('./partials/head') %>
 
-<div class="preloader">
-    <img class="rocket" src="/raket-transformed-removebg-preview.png" alt="raket">
-    <img class="star1" src="/stars-svgrepo-com-removebg-preview.png" alt="ster">
-    <img class="star2" src="/stars-svgrepo-com-removebg-preview.png" alt="ster">
-    <img class="star3" src="/stars-svgrepo-com-removebg-preview.png" alt="ster">
-    <img src="/B92968A9008B6E2B7FB9DAD481BB28C24CF77B09C2FE47047FFC4DB033254DBA-_1_-transformed-removebg-preview.png" alt="aarde" class="aarde">
-    <span><h1 class="number">0%</h1></span>
-</div>
-
-<div class="website">
-
-<h1>FDND Squadpage</h1>
-
-
-<section class="class-switch">
-  <ul class="slides">
-    <input type="radio" id="control-1" name="control" >
-    <input type="radio" id="control-2" name="control" checked>
-    <input type="radio" id="control-3" name="control">
-
-    <div class="navigator slide-1">
-      <label for="control-3">
-        <i class="fas fa-chevron-left"></i>
-      </label>
-      <label for="control-2">
-        <i class="fas fa-chevron-right"></i>
-      </label>
-    </div>
-    
-    <div class="navigator slide-2">
-      <label for="control-1">
-        <i class="fas fa-chevron-left"></i>
-      </label>
-      <label for="control-3">
-        <i class="fas fa-chevron-right"></i>
-      </label>
-    </div>
-    
-    <div class="navigator slide-3">
-      <label for="control-2">
-        <i class="fas fa-chevron-left"></i>
-      </label>
-      <label for="control-1">
-        <i class="fas fa-chevron-right"></i>
-      </label>
-    </div>
-    
-    <li class="slide">D</li>
-    <li class="slide">E</li>
-    <li class="slide">F</li>
-    
-    <div class="controls-visible">
-      <label for="control-1"></label>
-      <label for="control-2"></label>
-      <label for="control-3"></label>
-    </div>
-  </ul>
-</section>
-
-<section class="filters">
-
-<div class="dropdown">
-  <div class="select">
-    <div class="selected">Provincie</div>
-    <div class="caret"></div>
-  </div>
-  <ul class="menu">
-    <li>-</li>
-    <li>Noord-Holland</li>
-    <li>Zuid-Holland</li>
-    <li>Utrecht</li>
-    <li>Gelderland</li>
-    <li>Anders</li>
-  </ul>
-</div>
-
-<div class="dropdown">
-  <div class="select">
-    <span class="selected">Naam</span>
-    <div class="caret"></div>
-  </div>
-  <ul class="menu">
-    <li>-</li>
-    <li>A-Z</li>
-    <li>Z-A</li>
-  </ul>
-</div>
-
-<div class="dropdown">
-  <div class="select">
-    <span class="selected">Leeftijd</span>
-    <div class="caret"></div>
-  </div>
-  <ul class="menu">
-    <li>-</li>
-    <li>16-20</li>
-    <li>21-25</li>
-    <li>26-30</li>
-    <li>30+</li>
-  </ul>
-</div>
-
-<div class="dropdown">
-  <div class="select">
-    <span class="selected">Geslacht</span>
-    <div class="caret"></div>
-  </div>
-  <ul class="menu">
-    <li>-</li>
-    <li>M</li>
-    <li>V</li>
-  </ul>
-</div>
-</section>
-
-<section class="card-container">
-  <% persons.forEach(person => { %>
-    <div class="card">
-      <%= person.avatar %>
-      <ul>
-        <li>Naam: <%= person.name %> <%= person.prefix %> <%= person.surname %></li>
-        <li>Leeftijd: <%= person.custom.leeftijd %></li>
+<main>
+  <% persons.forEach(person => { 
+    if (person.custom && person.custom != '') {
+      try {
+        person.custom = JSON.parse(person.custom)
+      } catch (e) {
+        console.error('Error parsing JSON:', e)
+        person.custom = {}
+      }
+    } else {
+      person.custom = {}
+    } %>
+    <article class="student-card">
+      <picture> <img src="<%= person.avatar %>" alt="student"> </picture>
+        <h3 class="kalam-regular"><%= person.name %> <%= person.prefix %> <%= person.surname%></h3>
+        <ul>
+        <li>Leeftijd: <%= person.custom.leeftijd ? person.custom.leeftijd : 'N/A' %></li>
         <li>Geslacht:</li>
-        <li>Provincie:</li>
-    </ul>
-    </div>
-  <% }) %>
-</section>
-
-<ul>
-  <% persons.forEach(person => {
-    const whatever = 'foo'
-    if (person.custom != '') {
-      person.custom = JSON.parse(person.custom)
-    }
-    %>
     <li>
-      <a href="./person/<%= person.id %>"><%= person.name %></a>, squad_id <%= person.squad_id %>
       <form method="POST" action="/detail/<%= person.id %>/SE-GL-emoji">
           <button type="submit" name="emoji" value="star-eyes">🤩</button> <% if (person.custom.emojis && person.custom.emojis.starEyes) { %> <%= person.custom.emojis.starEyes %> keer <% } else { %> 0 keer <% } %>
            <button type="submit" name="emoji" value="glasses-eyes">😎</button> <% if (person.custom.emojis && person.custom.emojis.glassesEyes) { %> <%= person.custom.emojis.glassesEyes %> keer <% } else { %> 0 keer <% } %>
       </form>
-      
     </li>
-  <% }) %>
-</ul>
-</div>
+  </ul>
+    </article>
+    <% }) %>
 
+</main>
 
 <%- include('./partials/foot') %>

@@ -44,7 +44,7 @@ const squadData = await fetchJson(apiUrl + '/squad')
 // Maak een GET route voor de index
 app.get('/', function (request, response) {
   // Haal alle personen uit de WHOIS API op
-  fetchJson(apiUrl + '/person/?filter={"squad_id":4}&sort=name').then((apiData) => {
+  fetchJson(apiUrl + '/person/?sort=name').then((apiData) => {
     // apiData bevat gegevens van alle personen uit alle squads
     // Je zou dat hier kunnen filteren, sorteren, of zelfs aanpassen, voordat je het doorgeeft aan de view
 
