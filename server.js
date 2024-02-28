@@ -46,12 +46,28 @@ app.get('/', function (request, response) {
   // Haal alle personen uit de WHOIS API op
   fetchJson(apiUrl + '/person/?sort=name').then((apiData) => {
     // apiData bevat gegevens van alle personen uit alle squads
-    // Je zou dat hier kunnen filteren, sorteren, of zelfs aanpassen, voordat je het doorgeeft aan de view
-
     // Render index.ejs uit de views map en geef de opgehaalde data mee als variabele, genaamd persons
     response.render('index', {persons: apiData.data, squads: squadData.data})
   })
 })
+ // Je zou dat hier kunnen filteren, sorteren, of zelfs aanpassen, voordat je het doorgeeft aan de view
+ 
+// Sorteert de data van voornaam in ASCending order
+app.get('/sort', function (request, response) {
+  fetchJson(apiUrl + '/person/?sort=name').then((apiData) => {
+    apiData.data.sort((a, b) => a.name.localeCompare(b.name));
+    response.render('index', {persons: apiData.data, squads: squadData.data})
+  })
+})
+
+// Sorteert de data van voornaam in DESCending order
+app.get('/sort-desc', function (request, response) {
+  fetchJson(apiUrl + '/person/?sort=name').then((apiData) => {
+    apiData.data.sort((a, b) => b.name.localeCompare(a.name));
+    response.render('index', {persons: apiData.data, squads: squadData.data})
+  })
+})
+
 
 // Maak een POST route voor de index
 app.post('/', function (request, response) {

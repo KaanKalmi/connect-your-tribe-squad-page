@@ -1,109 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="border.css">
- 
-    <title>FDND Squadpage</title>
-  </head>
-  <div class="preloader">
-    <img class="rocket" src="/raket-transformed-removebg-preview.png" alt="raket">
-    <img class="star1" src="/stars-svgrepo-com-removebg-preview.png" alt="ster">
-    <img class="star2" src="/stars-svgrepo-com-removebg-preview.png" alt="ster">
-    <img class="star3" src="/stars-svgrepo-com-removebg-preview.png" alt="ster">
-    <img src="/B92968A9008B6E2B7FB9DAD481BB28C24CF77B09C2FE47047FFC4DB033254DBA-_1_-transformed-removebg-preview.png" alt="aarde" class="aarde">
-    <span><h1 class="number">0%</h1></span>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="border.css">
+
+  <title>FDND Squadpage</title>
+</head>
+<div class="preloader">
+  <img class="rocket" src="/raket-transformed-removebg-preview.png" alt="raket">
+  <img class="star1" src="/stars-svgrepo-com-removebg-preview.png" alt="ster">
+  <img class="star2" src="/stars-svgrepo-com-removebg-preview.png" alt="ster">
+  <img class="star3" src="/stars-svgrepo-com-removebg-preview.png" alt="ster">
+  <img src="/B92968A9008B6E2B7FB9DAD481BB28C24CF77B09C2FE47047FFC4DB033254DBA-_1_-transformed-removebg-preview.png"
+    alt="aarde" class="aarde">
+  <span>
+    <h1 class="number">0%</h1>
+  </span>
 </div>
 
 <div class="website">
+  <h1>FDND Squadpage</h1>
+  <section class="filters">
 
-<h1>FDND Squadpage</h1>
-
-
-<section class="class-switch">
-  <ul class="slides">
-    <input type="radio" id="control-1" name="control" >
-    <input type="radio" id="control-2" name="control" checked>
-    <input type="radio" id="control-3" name="control">
-
-    <div class="navigator slide-1">
-      <label for="control-3">
-        <i class="fas fa-chevron-left"></i>
-      </label>
-      <label for="control-2">
-        <i class="fas fa-chevron-right"></i>
-      </label>
+    <div class="dropdown">
+      <div class="select">
+        <span class="selected">Squad</span>
+        <div class="caret"></div>
+      </div>
+      <ul class="menu">
+        <li><a href="/filter/3">D</a></li>
+        <li><a href="/filter/4">E</a></li>
+        <li><a href="/filter/5">F</a></li>
+      </ul>
     </div>
-    
-    <div class="navigator slide-2">
-      <label for="control-1">
-        <i class="fas fa-chevron-left"></i>
-      </label>
-      <label for="control-3">
-        <i class="fas fa-chevron-right"></i>
-      </label>
+
+    <div class="dropdown">
+      <div class="select">
+        <span class="selected">Naam</span>
+        <div class="caret"></div>
+      </div>
+      <ul class="menu">
+        <li><a href="/sort">A-Z</a></li>
+        <li><a href="/sort-desc">Z-A</a></li>
+      </ul>
     </div>
-    
-    <div class="navigator slide-3">
-      <label for="control-2">
-        <i class="fas fa-chevron-left"></i>
-      </label>
-      <label for="control-1">
-        <i class="fas fa-chevron-right"></i>
-      </label>
+
+    <div class="dropdown">
+      <div class="select">
+        <span class="selected">Leeftijd</span>
+        <div class="caret"></div>
+      </div>
+      <ul class="menu">
+        <li>16-20</li>
+        <li>21-25</li>
+        <li>26-30</li>
+        <li>30+</li>
+      </ul>
     </div>
-    
-    <li class="slide">D</li>
-    <li class="slide">E</li>
-    <li class="slide">F</li>
-    
-    <div class="controls-visible">
-      <label for="control-1"></label>
-      <label for="control-2"></label>
-      <label for="control-3"></label>
+
+    <div class="dropdown">
+      <div class="select">
+        <span class="selected">Geslacht</span>
+        <div class="caret"></div>
+      </div>
+      <ul class="menu">
+        <li>M</li>
+        <li>V</li>
+      </ul>
     </div>
-  </ul>
-</section>
-
-<section class="filters">
-
-<div class="dropdown">
-  <div class="select">
-    <span class="selected">Naam</span>
-    <div class="caret"></div>
-  </div>
-  <ul class="menu">
-    <li>-</li>
-    <li>A-Z</li>
-    <li>Z-A</li>
-  </ul>
-</div>
-
-<div class="dropdown">
-  <div class="select">
-    <span class="selected">Leeftijd</span>
-    <div class="caret"></div>
-  </div>
-  <ul class="menu">
-    <li>-</li>
-    <li>16-20</li>
-    <li>21-25</li>
-    <li>26-30</li>
-    <li>30+</li>
-  </ul>
-</div>
-
-<div class="dropdown">
-  <div class="select">
-    <span class="selected">Geslacht</span>
-    <div class="caret"></div>
-  </div>
-  <ul class="menu">
-    <li>-</li>
-    <li>M</li>
-    <li>V</li>
-  </ul>
-</div>
-</section>
+  </section>
