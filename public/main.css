@@ -14,6 +14,7 @@ main {
   align-items: center;
   flex-wrap: wrap;
   max-width: 100%;
+
   & img {
     display: inline-block;
     margin: 0.2em;
@@ -33,6 +34,7 @@ main {
     margin: 1.5em;
     padding: 0.6em;
     flex: 1 0 21%;
+
     & img {
       margin: 0.4em;
     }

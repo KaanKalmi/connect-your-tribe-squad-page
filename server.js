@@ -19,7 +19,7 @@ app.set('views', './views')
 // Gebruik de map 'public' voor statische resources, zoals stylesheets, afbeeldingen en client-side JavaScript
 app.use(express.static('public'))
 
-app.use(express.urlencoded({extended: true}))
+app.use(express.urlencoded({ extended: true }))
 
 // Stel het poortnummer in waar express op moet gaan luisteren
 app.set('port', process.env.PORT || 8000)
@@ -47,16 +47,16 @@ app.get('/', function (request, response) {
   fetchJson(apiUrl + '/person/?sort=name').then((apiData) => {
     // apiData bevat gegevens van alle personen uit alle squads
     // Render index.ejs uit de views map en geef de opgehaalde data mee als variabele, genaamd persons
-    response.render('index', {persons: apiData.data, squads: squadData.data})
+    response.render('index', { persons: apiData.data, squads: squadData.data })
   })
 })
- // Je zou dat hier kunnen filteren, sorteren, of zelfs aanpassen, voordat je het doorgeeft aan de view
- 
+// Je zou dat hier kunnen filteren, sorteren, of zelfs aanpassen, voordat je het doorgeeft aan de view
+
 // Sorteert de data van voornaam in ASCending order
 app.get('/sort', function (request, response) {
   fetchJson(apiUrl + '/person/?sort=name').then((apiData) => {
     apiData.data.sort((a, b) => a.name.localeCompare(b.name));
-    response.render('index', {persons: apiData.data, squads: squadData.data})
+    response.render('index', { persons: apiData.data, squads: squadData.data })
   })
 })
 
@@ -64,7 +64,7 @@ app.get('/sort', function (request, response) {
 app.get('/sort-desc', function (request, response) {
   fetchJson(apiUrl + '/person/?sort=name').then((apiData) => {
     apiData.data.sort((a, b) => b.name.localeCompare(a.name));
-    response.render('index', {persons: apiData.data, squads: squadData.data})
+    response.render('index', { persons: apiData.data, squads: squadData.data })
   })
 })
 
@@ -80,7 +80,7 @@ app.get('/person/:id', function (request, response) {
   // Gebruik de request parameter id en haal de juiste persoon uit de WHOIS API op
   fetchJson(apiUrl + '/person/' + request.params.id).then((apiData) => {
     // Render person.ejs uit de views map en geef de opgehaalde data mee als variable, genaamd person
-    response.render('person', {person: apiData.data, squads: squadData.data})
+    response.render('person', { person: apiData.data, squads: squadData.data })
   })
 })
 
@@ -92,48 +92,64 @@ app.post('/detail/:id/SE-GL-emoji', function (request, response) {
   //Stap 1: Haal de huidige gegevens voor deze persoon op, uit de WHOIS API
 
   fetchJson('https://fdnd.directus.app/items/person/' + request.params.id).then((apiResponse) => {
-  // Het custom field is een String, dus die moeten we eerst omzetten (= parsen)
-  // naar een Object, zodat we er mee kunnen werken
-  try {
-    apiResponse.data.custom = JSON.parse(apiResponse.data.custom)
-  } catch (e) {
-    apiResponse.data.custom = {}
-  }
-  
-  //STAP 2: Voeg de emoji toe aan het custom object
-  
-  if (apiResponse.data.custom.emojis === true || !apiResponse.data.custom.emojis) {
-    apiResponse.data.custom.emojis = {}
-  }
-
-  if (request.body.emoji == 'star-eyes') {
-    if (!apiResponse.data.custom.emojis.starEyes) {
-      apiResponse.data.custom.emojis.starEyes = 0
+    // Het custom field is een String, dus die moeten we eerst omzetten (= parsen)
+    // naar een Object, zodat we er mee kunnen werken
+    try {
+      apiResponse.data.custom = JSON.parse(apiResponse.data.custom)
+    } catch (e) {
+      apiResponse.data.custom = {}
     }
-    apiResponse.data.custom.emojis.starEyes++
-  }
 
-  if (request.body.emoji == 'glasses-eyes') {
-    if (!apiResponse.data.custom.emojis.glassesEyes) {
-      apiResponse.data.custom.emojis.glassesEyes = 0
+    //STAP 2: Voeg de emoji toe aan het custom object
+
+    if (apiResponse.data.custom.emojis === true || !apiResponse.data.custom.emojis) {
+      apiResponse.data.custom.emojis = {}
     }
-    apiResponse.data.custom.emojis.glassesEyes++
-  }
 
-//STAP 3: Overschrijf het custom field voor deze persoon
+    if (request.body.emoji == 'star-eyes') {
+      if (!apiResponse.data.custom.emojis.starEyes) {
+        apiResponse.data.custom.emojis.starEyes = 0
+      }
+      apiResponse.data.custom.emojis.starEyes++
+    }
 
-fetchJson('https://fdnd.directus.app/items/person/' + request.params.id, {
-  method: 'PATCH',
-  body: JSON.stringify({
-    custom: apiResponse.data.custom
-}),
-  headers: {
-    'Content-type': 'application/json; charset=UTF-8'
+    if (request.body.emoji == 'glasses-eyes') {
+      if (!apiResponse.data.custom.emojis.glassesEyes) {
+        apiResponse.data.custom.emojis.glassesEyes = 0
+      }
+      apiResponse.data.custom.emojis.glassesEyes++
+    }
+
+    //STAP 3: Overschrijf het custom field voor deze persoon
+
+    fetchJson('https://fdnd.directus.app/items/person/' + request.params.id, {
+      method: 'PATCH',
+      body: JSON.stringify({
+        custom: apiResponse.data.custom
+      }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8'
+      }
+    }).then((patchResponse) => {
+      //redirect naar de persoon pagina
+      response.redirect(303, '/');
+    });
   }
-}).then((patchResponse) => {
-  //redirect naar de persoon pagina
-  response.redirect(303, '/');
+  );
 });
-  }
-);
+
+
+// voor de mensen zonder avatar
+// Define the getAvatar function
+function getAvatar(person) {
+  return person.avatar || '/pfp.png';
+}
+
+app.get('/', function (request, response) {
+fetchJson(apiUrl + '/person/?sort=name').then((apiData) => {
+  apiData.data.forEach(person => {
+    person.avatar = getAvatar(person);
+  });
+  response.render('index', { persons: apiData.data, squads: squadData.data });
+});
 });

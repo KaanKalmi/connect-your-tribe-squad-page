@@ -1,33 +1,41 @@
 <%- include('./partials/head') %>
-
-<main>
-  <% persons.forEach(person => { 
-    if (person.custom && person.custom != '') {
+  <main>
+    <% persons.forEach(person=> {
+      if (person.custom && person.custom != '') {
       try {
-        person.custom = JSON.parse(person.custom)
+      person.custom = JSON.parse(person.custom)
       } catch (e) {
-        console.error('Error parsing JSON:', e)
-        person.custom = {}
-      }
-    } else {
+      console.error('Error parsing JSON:', e)
       person.custom = {}
-    } %>
-    <article class="student-card">
-      <picture> <img src="<%= person.avatar %>" alt="student"> </picture>
-        <h3 class="kalam-regular"><%= person.name %> <%= person.prefix %> <%= person.surname%></h3>
+      }
+      } else {
+      person.custom = {}
+      } %>
+      <article class="student-card">
+        <picture> <img src="<%= person.avatar %>" alt="student"> </picture>
+        <h3>
+          <%= person.name %>
+            <%= person.prefix %>
+              <%= person.surname%>
+        </h3>
         <ul>
-        <li>Leeftijd: <%= person.custom.leeftijd ? person.custom.leeftijd : 'N/A' %></li>
-        <li>Geslacht:</li>
-    <li>
-      <form method="POST" action="/detail/<%= person.id %>/SE-GL-emoji">
-          <button type="submit" name="emoji" value="star-eyes">🤩</button> <% if (person.custom.emojis && person.custom.emojis.starEyes) { %> <%= person.custom.emojis.starEyes %> keer <% } else { %> 0 keer <% } %>
-           <button type="submit" name="emoji" value="glasses-eyes">😎</button> <% if (person.custom.emojis && person.custom.emojis.glassesEyes) { %> <%= person.custom.emojis.glassesEyes %> keer <% } else { %> 0 keer <% } %>
-      </form>
-    </li>
-  </ul>
-    </article>
-    <% }) %>
+          <li>Leeftijd: <%= person.custom.leeftijd ? person.custom.leeftijd : 'N/A' %>
+          </li>
+          <li>Geslacht: N/A</li>
+          <li>
+            <form method="POST" action="/detail/<%= person.id %>/SE-GL-emoji">
+              <button type="submit" name="emoji" value="star-eyes">🤩</button>
+              <% if (person.custom.emojis && person.custom.emojis.starEyes) { %>
+                <%= person.custom.emojis.starEyes %> keer <% } else { %> 0 keer <% } %>
+                      <button type="submit" name="emoji" value="glasses-eyes">😎</button>
+                      <% if (person.custom.emojis && person.custom.emojis.glassesEyes) { %>
+                        <%= person.custom.emojis.glassesEyes %> keer <% } else { %> 0 keer <% } %>
+            </form>
+          </li>
+        </ul>
+      </article>
+      <% }) %>
 
-</main>
+  </main>
 
-<%- include('./partials/foot') %>
+  <%- include('./partials/foot') %>
