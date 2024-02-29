@@ -8,8 +8,6 @@ import express from 'express'
 // Maak een nieuwe express app aan
 const app = express()
 
-
-
 // Stel ejs in als template engine
 app.set('view engine', 'ejs')
 
@@ -152,4 +150,15 @@ app.post('/detail/:id/SE-GL-emoji', function (request, response) {
     });
   }
   );
+});
+// Filter by squad_id
+app.get('/squad/:squad_id', function (request, response) {
+  // Use the request parameter squad_id to filter persons from the WHOIS API
+  fetchJson(apiUrl + '/person/?filter[squad_id][_eq]=' + request.params.squad_id).then((apiData) => {
+    // Fetch the squads data
+    fetchJson(apiUrl + '/squad').then((squadData) => {
+      // Render index.ejs from the views folder and pass the fetched data as variables
+      response.render('index', { persons: apiData.data, squads: squadData.data });
+    });
+  });
 });

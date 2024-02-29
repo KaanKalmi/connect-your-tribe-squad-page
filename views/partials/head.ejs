@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="/style.css">
 
   <title>FDND Squadpage</title>
 </head>
@@ -30,9 +30,9 @@
         <div class="caret"></div>
       </div>
       <ul class="menu">
-        <li>Squad D</li>
-        <li>Squad E</li>
-        <li>Squad F</li>
+        <% for(let i=0; i < squads.length; i++) { %>
+          <li><a href="/squad/<%= squads[i].id %>"><%= squads[i].name %></a></li>
+        <% } %>
       </ul>
     </div>
 
