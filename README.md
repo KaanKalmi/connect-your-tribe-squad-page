@@ -3,6 +3,12 @@
 # Titel
 <!-- Geef je project een titel en schrijf in één zin wat het is -->
 
+<img width="1410" alt="Scherm­afbeelding 2024-03-01 om 10 18 45" src="https://github.com/KaanKalmi/connect-your-tribe-squad-page/assets/144004885/bc4a65fb-0b2c-45a6-a221-9381af4fb14e">
+
+<img width="1470" alt="Scherm­afbeelding 2024-03-01 om 10 14 46" src="https://github.com/KaanKalmi/connect-your-tribe-squad-page/assets/144004885/4260469f-7deb-48a2-ac2a-1f979050d5ba">
+
+<img width="514" alt="Scherm­afbeelding 2024-03-01 om 10 16 10" src="https://github.com/KaanKalmi/connect-your-tribe-squad-page/assets/144004885/5f021ec3-5b8e-4669-960e-e08a63b5cf93">
+
 ## Inhoudsopgave
 
   * [Beschrijving](#beschrijving)
