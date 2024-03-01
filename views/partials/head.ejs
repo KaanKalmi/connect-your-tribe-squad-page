@@ -31,7 +31,7 @@
       </div>
       <ul class="menu">
         <% for(let i=0; i < squads.length; i++) { %>
-          <li><a href="/squad/<%= squads[i].id %>"><%= squads[i].name %></a></li>
+          <li><a href="/squad/<%= squads[i].id %>"><%= squads[i].name %></a></li> <!-- filter voor squads werkend gekregen hiero, je laad de ID waardes in per squad en zorgt ervoor dat het per optie +1 krijgt tot er geen available waarde is -->
         <% } %>
       </ul>
     </div>
@@ -42,8 +42,8 @@
         <div class="caret"></div>
       </div>
       <ul class="menu">
-        <li><a href="/sort">A-Z</a></li>
-        <li><a href="/sort-desc">Z-A</a></li>
+        <li><a href="/sort">A-Z</a></li> <!-- ascending order sortere -->
+        <li><a href="/sort-desc">Z-A</a></li> <!-- Z-A descending order sorteren via een link naar de gesorteerde pagina  -->
       </ul>
     </div>
 

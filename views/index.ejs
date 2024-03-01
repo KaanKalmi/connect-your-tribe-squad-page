@@ -1,5 +1,5 @@
 <%- include('./partials/head') %>
-  <main>
+  <main> <!-- De forEach loop hieronder laad de custom data in voor elk persoon -->
     <% persons.forEach(person=> {
       if (person.custom && person.custom != '') {
       try {
@@ -14,12 +14,12 @@
       <article class="student-card">
         <picture> <img src="<%= person.avatar %>" alt="student"> </picture>
         <h3>
-          <%= person.name %>
+          <%= person.name %> <!-- Hier laad je dynamisch de naam, achternaam en tussenvoegsel in per persoon -->
             <%= person.prefix %>
               <%= person.surname%>
         </h3>
         <ul>
-          <li>Leeftijd: <%= person.custom.leeftijd ? person.custom.leeftijd : 'N/A' %>
+          <li>Leeftijd: <%= person.custom.leeftijd ? person.custom.leeftijd : 'N/A' %> <!-- elk persoons leeftijd word heir in gelade -->
           </li>
           <li>Geslacht: N/A</li>
           <li>
@@ -30,7 +30,7 @@
                       <button type="submit" name="emoji" value="glasses-eyes">😎</button>
                       <% if (person.custom.emojis && person.custom.emojis.glassesEyes) { %>
                         <%= person.custom.emojis.glassesEyes %> keer <% } else { %> 0 keer <% } %>
-            </form>
+            </form> <!-- Custom emojis met counter-->
           </li>
         </ul>
       </article>
